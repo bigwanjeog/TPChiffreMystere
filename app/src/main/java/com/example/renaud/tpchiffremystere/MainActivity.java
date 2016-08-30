@@ -1,5 +1,6 @@
 package com.example.renaud.tpchiffremystere;
 
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,6 +17,8 @@ public class MainActivity extends AppCompatActivity {
     int numTest;//numéro entré a tester
     int numMystere = rdm.nextInt(100) + 1;
     int cptTest = 0;//nombre de test effectué
+    final static int NBDETEST =5;//nombre de test a faire
+
     Button activityMainBtnValider;
     EditText activityMainTfNumTest;
     TextView activityMainTvPlusMoins;
@@ -56,23 +59,23 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void verificationNum(int numTest) {
-        if (cptTest < 5){
+        if (cptTest < 4){
+            cptTest++;
             if (numTest < numMystere){
                 activityMainTvPlusMoins.setText("PLUS");
             } else if (numTest > numMystere){
                 activityMainTvPlusMoins.setText("MOINS");
             } else {
                 //TODO recommencer
+                activityMainTvPlusMoins.setTextColor(Color.GREEN);
                 activityMainTvPlusMoins.setText("GG");
                 activityMainBtnValider.setEnabled(false);
             }
-            cptTest++;
         } else{
             //TODO recommencer
             activityMainTvPlusMoins.setText("PERDU !!\n La bonne réponse était " + numMystere);
             activityMainBtnValider.setEnabled(false);
         }
-
         activityMainTvEssai.setText((5 - cptTest) + " essais restants");
     }
 }
