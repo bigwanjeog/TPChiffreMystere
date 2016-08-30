@@ -9,29 +9,52 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.renaud.tpchiffremystere.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        android:id="@+id/textView" />
-
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/button"
-        android:layout_below="@+id/textView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="132dp"/>
+        android:text="Valider"
+        android:id="@+id/activityMainBtnValider"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Test de commit"
-        android:id="@+id/textView2"
-        android:layout_below="@+id/textView"
+        android:text="Entrez un numéro entre 1 et 100"
+        android:id="@+id/activityMainLblInstruction"
+        android:layout_marginTop="73dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="3"
+        android:id="@+id/activityMainTfNumTest"
+        android:maxLength="3"
+        android:layout_above="@+id/activityMainBtnValider"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="51dp" />
+        android:textAlignment="center" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/activityMainTvPlusMoins"
+        android:layout_above="@+id/activityMainTfNumTest"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center"
+        android:textColor="#c50e0e" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/activityMainTvEssai"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="26dp" />
 
 </RelativeLayout>
