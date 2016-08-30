@@ -23,4 +23,15 @@
         android:layout_below="@+id/textView"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="132dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Test de commit"
+        android:id="@+id/textView2"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="51dp" />
+
 </RelativeLayout>
