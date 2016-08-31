@@ -17,7 +17,8 @@ public class MainActivity extends AppCompatActivity {
     int numTest;//numéro entré a tester
     int numMystere;
     int cptTest;//nombre de test effectué
-    final static int NBDETEST =4;//nombre de test a faire
+    String essais;
+    final static int NBDETEST = 5;//nombre de test a faire
 
     Button activityMainBtnValider;
     Button activityMainBtnReset;
@@ -44,7 +45,8 @@ public class MainActivity extends AppCompatActivity {
         activityMainTvPlusMoins = (TextView) findViewById(R.id.activityMainTvPlusMoins);
         activityMainTvEssai = (TextView) findViewById(R.id.activityMainTvEssai);
 
-        activityMainTvEssai.setText((NBDETEST + 1 - cptTest) + " essais restants");
+        essais = (NBDETEST - cptTest) + " essais restants" + numMystere;
+        activityMainTvEssai.setText(essais);
         activityMainBtnValider.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,26 +70,51 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void verificationNum(int numTest) {
-        if (cptTest < NBDETEST){
-            if (numTest < numMystere){
-                activityMainTvPlusMoins.setText("PLUS");
-            } else if (numTest > numMystere){
-                activityMainTvPlusMoins.setText("MOINS");
-            } else {
-                //TODO recommencer
-                activityMainTvPlusMoins.setTextColor(Color.GREEN);
-                activityMainTvPlusMoins.setText("GG");
-                activityMainBtnValider.setEnabled(false);
-                reset();
-            }
+        String resultat = "";
+        cptTest++;
+        if (numTest < numMystere) {
+            resultat = verificationCptPlus();
+        } else if (numTest > numMystere) {
+            resultat = verificationCptMoins();
+        } else {
+            resultat = gagner();
+        }
+        essais = (NBDETEST - cptTest) + " essais restants" + numMystere;
+        activityMainTvEssai.setText(essais);
+        activityMainTvPlusMoins.setText(resultat);
+
+    }
+
+    public String verificationCptPlus() {
+        String resultat = "";
+        if (cptTest < NBDETEST) {
+            resultat = "PLUS";
         } else{
-            //TODO recommencer
-            activityMainTvPlusMoins.setText("PERDU !!\n La bonne réponse était " + numMystere);
+            resultat = "PERDU !!\n La bonne réponse était " + numMystere;
             activityMainBtnValider.setEnabled(false);
             reset();
         }
-        cptTest++;
-        activityMainTvEssai.setText((NBDETEST + 1 - cptTest) + " essais restants");
+        return resultat;
+    }
+
+    public String verificationCptMoins() {
+        String resultat = "";
+        if (cptTest < NBDETEST) {
+            resultat = "MOINS";
+        } else{
+            resultat = "PERDU !!\n La bonne réponse était " + numMystere;
+            activityMainBtnValider.setEnabled(false);
+            reset();
+        }
+        return resultat;
+    }
+
+    public String gagner() {
+        String resultat = "GG !!";
+        activityMainTvPlusMoins.setTextColor(Color.GREEN);
+        activityMainBtnValider.setEnabled(false);
+        reset();
+        return resultat;
     }
 
     public void reset() {
