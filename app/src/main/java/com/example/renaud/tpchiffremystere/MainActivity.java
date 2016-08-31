@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         activityMainTvPlusMoins = (TextView) findViewById(R.id.activityMainTvPlusMoins);
         activityMainTvEssai = (TextView) findViewById(R.id.activityMainTvEssai);
 
-        essais = (NBDETEST - cptTest) + " essais restants" + numMystere;//texte afficher dans activityMainTvEssai
+        essais = (NBDETEST - cptTest) + " essais restants";//texte afficher dans activityMainTvEssai
         activityMainTvEssai.setText(essais);//texte afficher dans activityMainTvEssai
 
         activityMainBtnValider.setOnClickListener(new View.OnClickListener() {
