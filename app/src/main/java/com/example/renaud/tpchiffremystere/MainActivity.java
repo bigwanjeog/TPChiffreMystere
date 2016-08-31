@@ -129,11 +129,7 @@ public class MainActivity extends AppCompatActivity {
      * Renvoie le texte de victoire, change la couleur et invoque la fonction reset()
      */
     public void gagner() {
-        /*String resultat = "dvagg !!";
-        activityMainTvPlusMoins.setTextColor(Color.GREEN);
-        reset();
-        */
-        Intent i = new Intent(this, Gagner.class);
+        Intent i = new Intent(MainActivity.this, Gagner.class);
         i.putExtra("numTest", Integer.toString(numTest));
         startActivity(i);
     }
