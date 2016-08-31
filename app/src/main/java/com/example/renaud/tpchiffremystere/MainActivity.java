@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         loadActivity();
-
     }
 
     public void loadActivity () {
@@ -45,8 +44,9 @@ public class MainActivity extends AppCompatActivity {
         activityMainTvPlusMoins = (TextView) findViewById(R.id.activityMainTvPlusMoins);
         activityMainTvEssai = (TextView) findViewById(R.id.activityMainTvEssai);
 
-        essais = (NBDETEST - cptTest) + " essais restants" + numMystere;
+        essais = (NBDETEST - cptTest) + " essais restants";
         activityMainTvEssai.setText(essais);
+
         activityMainBtnValider.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void verificationNum(int numTest) {
-        String resultat = "";
+        String resultat;
         cptTest++;
         if (numTest < numMystere) {
             resultat = verificationCptPlus();
@@ -79,32 +79,27 @@ public class MainActivity extends AppCompatActivity {
         } else {
             resultat = gagner();
         }
-        essais = (NBDETEST - cptTest) + " essais restants" + numMystere;
+        essais = (NBDETEST - cptTest) + " essais restants";
         activityMainTvEssai.setText(essais);
         activityMainTvPlusMoins.setText(resultat);
-
     }
 
     public String verificationCptPlus() {
-        String resultat = "";
+        String resultat;
         if (cptTest < NBDETEST) {
             resultat = "PLUS";
         } else{
-            resultat = "PERDU !!\n La bonne réponse était " + numMystere;
-            activityMainBtnValider.setEnabled(false);
-            reset();
+            resultat = perdu();
         }
         return resultat;
     }
 
     public String verificationCptMoins() {
-        String resultat = "";
+        String resultat;
         if (cptTest < NBDETEST) {
             resultat = "MOINS";
         } else{
-            resultat = "PERDU !!\n La bonne réponse était " + numMystere;
-            activityMainBtnValider.setEnabled(false);
-            reset();
+            resultat = perdu();
         }
         return resultat;
     }
@@ -112,6 +107,13 @@ public class MainActivity extends AppCompatActivity {
     public String gagner() {
         String resultat = "GG !!";
         activityMainTvPlusMoins.setTextColor(Color.GREEN);
+        activityMainBtnValider.setEnabled(false);
+        reset();
+        return resultat;
+    }
+
+    public String perdu() {
+        String resultat = "PERDU !!\n La bonne réponse était " + numMystere;
         activityMainBtnValider.setEnabled(false);
         reset();
         return resultat;
