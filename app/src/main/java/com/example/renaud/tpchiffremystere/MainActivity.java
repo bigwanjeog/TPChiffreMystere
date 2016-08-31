@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
     int numTest;//numéro entré a tester
     int numMystere = rdm.nextInt(100) + 1;
     int cptTest = 0;//nombre de test effectué
-    final static int NBDETEST =5;//nombre de test a faire
+    final static int NBDETEST =4;//nombre de test a faire
 
     Button activityMainBtnValider;
     EditText activityMainTfNumTest;
@@ -34,8 +34,7 @@ public class MainActivity extends AppCompatActivity {
         activityMainTvPlusMoins = (TextView) findViewById(R.id.activityMainTvPlusMoins);
         activityMainTvEssai = (TextView) findViewById(R.id.activityMainTvEssai);
 
-        activityMainTvEssai.setText((5 - cptTest) + " essais restants");
-
+        activityMainTvEssai.setText((NBDETEST + 1 - cptTest) + " essais restants");
         activityMainBtnValider.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,8 +58,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void verificationNum(int numTest) {
-        if (cptTest < 4){
-            cptTest++;
+        if (cptTest < NBDETEST){
             if (numTest < numMystere){
                 activityMainTvPlusMoins.setText("PLUS");
             } else if (numTest > numMystere){
@@ -76,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
             activityMainTvPlusMoins.setText("PERDU !!\n La bonne réponse était " + numMystere);
             activityMainBtnValider.setEnabled(false);
         }
-        activityMainTvEssai.setText((5 - cptTest) + " essais restants");
+        cptTest++;
+        activityMainTvEssai.setText((NBDETEST + 1 - cptTest) + " essais restants");
     }
 }
