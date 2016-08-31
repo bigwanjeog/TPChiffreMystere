@@ -1,5 +1,6 @@
 package com.example.renaud.tpchiffremystere;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -29,14 +30,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        loadActivity();//lancer l'activity
+        loadMainActivity();//lancer l'activity
     }
 
     /**
      * lancer l'activity, attribution au variables, liaison XML a Java,
      * création de l'écouteur du bouton valider
      */
-    public void loadActivity () {
+    public void loadMainActivity() {
         setContentView(R.layout.activity_main);
 
         cptTest = 0;//Mise a 0 du compteur
@@ -48,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         activityMainTvPlusMoins = (TextView) findViewById(R.id.activityMainTvPlusMoins);
         activityMainTvEssai = (TextView) findViewById(R.id.activityMainTvEssai);
 
-        essais = (NBDETEST - cptTest) + " essais restants";//texte afficher dans activityMainTvEssai
+        essais = (NBDETEST - cptTest) + " essais restants" + numMystere;//texte afficher dans activityMainTvEssai
         activityMainTvEssai.setText(essais);//texte afficher dans activityMainTvEssai
 
         activityMainBtnValider.setOnClickListener(new View.OnClickListener() {
@@ -82,14 +83,14 @@ public class MainActivity extends AppCompatActivity {
      * @param numTest le numéro saisie
      */
     public void verificationNum(int numTest) {
-        String resultat;
+        String resultat = "";
         cptTest++;
         if (numTest < numMystere) {
             resultat = verificationCptPlus();
         } else if (numTest > numMystere) {
             resultat = verificationCptMoins();
         } else {
-            resultat = gagner();//si numTest est égale a numMystere
+            gagner();//si numTest est égale a numMystere
         }
         essais = (NBDETEST - cptTest) + " essais restants";
         activityMainTvEssai.setText(essais);
@@ -126,13 +127,15 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Renvoie le texte de victoire, change la couleur et invoque la fonction reset()
-     * @return resultat
      */
-    public String gagner() {
-        String resultat = "GG !!";
+    public void gagner() {
+        /*String resultat = "dvagg !!";
         activityMainTvPlusMoins.setTextColor(Color.GREEN);
         reset();
-        return resultat;
+        */
+        Intent i = new Intent(this, Gagner.class);
+        i.putExtra("numTest", Integer.toString(numTest));
+        startActivity(i);
     }
 
     /**
@@ -147,7 +150,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Désactive le bouton valider et rajoute le bouton Rejouer qui permet de relancer
-     * loadActivity pour recommener une partie
+     * loadMainActivity pour recommener une partie
      */
     public void reset() {
         activityMainBtnValider.setEnabled(false);
@@ -155,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
         activityMainBtnReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loadActivity();
+                loadMainActivity();
             }
         });
     }
