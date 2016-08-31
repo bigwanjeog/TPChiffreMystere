@@ -7,7 +7,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".Gagner">
+    tools:context=".Gagner"
+    android:background="#2b2b30">
 
     <ImageView
         android:layout_width="wrap_content"
@@ -25,7 +26,8 @@
         android:layout_marginBottom="31dp"
         android:layout_above="@+id/activityGagnerImgGG"
         android:layout_centerHorizontal="true"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:textColor="#ffffff" />
 
     <Button
         android:layout_width="wrap_content"

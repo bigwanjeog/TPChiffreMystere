@@ -26,7 +26,7 @@ public class Gagner extends AppCompatActivity {
 
         activityGagnerBtnReset = (Button) findViewById(R.id.activityGagnerBtnReset);
         activityGagnerTvGG = (TextView) findViewById(R.id.activityGagnerTvGG);
-        String texteVictoire = "Bravo !!\nTu as gagné avec le nombre " + (String)getIntent().getExtras().get("numTest");
+        String texteVictoire = "Bravo !!\nTu as gagné en " + (String)getIntent().getExtras().get("cptTest") + " essais";
         activityGagnerTvGG.setText(texteVictoire);
 
         activityGagnerBtnReset.setOnClickListener(new View.OnClickListener() {

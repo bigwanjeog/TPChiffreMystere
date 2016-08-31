@@ -130,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void gagner() {
         Intent i = new Intent(MainActivity.this, Gagner.class);
-        i.putExtra("numTest", Integer.toString(numTest));
+        i.putExtra("cptTest", Integer.toString(cptTest));
         startActivity(i);
     }
 

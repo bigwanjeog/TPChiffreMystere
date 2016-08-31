@@ -7,7 +7,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.renaud.tpchiffremystere.MainActivity">
+    tools:context="com.example.renaud.tpchiffremystere.MainActivity"
+    android:background="#2b2b30">
 
     <Button
         android:layout_width="wrap_content"
@@ -25,7 +26,8 @@
         android:id="@+id/activityMainLblInstruction"
         android:layout_marginTop="22dp"
         android:layout_below="@+id/activityMainTvEssai"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textColor="#ffffff" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -36,7 +38,8 @@
         android:maxLength="3"
         android:layout_above="@+id/activityMainBtnValider"
         android:layout_centerHorizontal="true"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:textColor="#ffffff" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -54,7 +57,8 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/activityMainTvEssai"
         android:layout_below="@+id/activityMainBtnReset"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textColor="#ffffff" />
 
     <Button
         android:layout_width="wrap_content"
