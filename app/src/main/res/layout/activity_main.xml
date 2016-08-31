@@ -23,8 +23,8 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Entrez un numéro entre 1 et 100"
         android:id="@+id/activityMainLblInstruction"
-        android:layout_marginTop="73dp"
-        android:layout_alignParentTop="true"
+        android:layout_marginTop="22dp"
+        android:layout_below="@+id/activityMainTvEssai"
         android:layout_centerHorizontal="true" />
 
     <EditText
@@ -53,8 +53,16 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/activityMainTvEssai"
+        android:layout_below="@+id/activityMainBtnReset"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rejouer"
+        android:id="@+id/activityMainBtnReset"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="26dp" />
+        android:layout_alignParentStart="true"
+        android:visibility="invisible" />
 
 </RelativeLayout>
